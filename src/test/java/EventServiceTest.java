@@ -29,26 +29,23 @@ class EventServiceTest {
 
     @Test
     void testUpdateEventStatusToLive() {
-        EventStatus eventStatus = new EventStatus();
-        eventStatus.setEventId("345");
-        eventStatus.setLive(true);
+        EventStatus eventStatus = new EventStatus("123", true);
+
         eventService.updateEventStatus(eventStatus);
 
-        assertTrue(eventService.isEventLive("345"));
+        assertTrue(eventService.isEventLive("123"));
     }
 
     @Test
     void testUpdateEventStatusToNotLive() {
-        EventStatus eventStatus = new EventStatus();
-        eventStatus.setEventId("345");
-        eventStatus.setLive(true);
-        eventService.updateEventStatus(eventStatus);
+        // First set to live
+        EventStatus liveStatus = new EventStatus("123", true);
+        eventService.updateEventStatus(liveStatus);
 
-        EventStatus notLiveStatus = new EventStatus();
-        eventStatus.setEventId("345");
-        eventStatus.setLive(false);
+        // Then set to not live
+        EventStatus notLiveStatus = new EventStatus("123", false);
         eventService.updateEventStatus(notLiveStatus);
 
-        assertFalse(eventService.isEventLive("345"));
+        assertFalse(eventService.isEventLive("123"));
     }
 }
