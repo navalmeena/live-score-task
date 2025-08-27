@@ -64,9 +64,9 @@ java -jar target/<JAR_NAME>
 ## 📡 API Usage
 **Update Event Status**
 
-`curl --location 'http://localhost:8080/events/status' \
+curl --location 'http://localhost:8080/events/status' \
 --header 'Content-Type: application/json' \
---data '{"eventId" : 2347 , "live": 1}'`
+--data '{"eventId" : 2347 , "live": 1}'
 
 **Monitor Kafka Messages**
 
